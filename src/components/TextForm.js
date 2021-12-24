@@ -59,19 +59,19 @@ export default function TextForm(props) {
                     <textarea className="form-control" style={{backgroundColor: props.mode==="dark"?"grey":"white",color:props.mode==="light"?"black":"white"}} onChange={handleOnChange} placeholder='Enter Text' value={text} id="myBox" rows="10"></textarea>                
                 </div>
             </div>
-            <button className='btn btn-primary mx-2' onClick={handleUpClick}>Convert to Uppercase</button>
-            <button className='btn btn-primary mx-2' onClick={handleLoClick}>Convert to Lowercase</button>
-            <button className='btn btn-primary mx-2' onClick={handleCapitalize}>Capitalize Words</button>
-            <button className='btn btn-primary mx-2' onClick={handleClear}>Clear</button>
-            <button className='btn btn-primary mx-2' onClick={handleSpace}>Handling Extra Spaces</button>
-            <button className='btn btn-primary mx-2' onClick={handleCopy}>Copy Text</button>
+            <button className='btn btn-primary mx-2 my-1' onClick={handleUpClick}>Convert to Uppercase</button>
+            <button className='btn btn-primary mx-2 my-1' onClick={handleLoClick}>Convert to Lowercase</button>
+            <button className='btn btn-primary mx-2 my-1' onClick={handleCapitalize}>Capitalize Words</button>
+            <button className='btn btn-primary mx-2 my-1' onClick={handleClear}>Clear</button>
+            <button className='btn btn-primary mx-2 my-1' onClick={handleSpace}>Handling Extra Spaces</button>
+            <button className='btn btn-primary mx-2 my-1' onClick={handleCopy}>Copy Text</button>
             
 
             <div className='container' style={{color: props.mode==="light"?"black":"white"}}>
                <h2>Text Summary</h2>    
                 <h5>{text.split(" ").length - 1} Words and {text.length} Characters</h5>
-                <h5>It will take {0.008 * text.split(" ").length} minutes to read this text.</h5>              
-                <h5>Text has {text.split(".").length - 1} sentances.</h5>
+                <h5>It will take {0.008 * text.split(" ").filter((element)=>{return element.lenght!==0}).length} minutes to read this text.</h5>              
+                <h5>Text has {text.split(".").filter((element)=>{return element.lenght!==0}).length} sentances.</h5>
                 <h2>Preview</h2>
                 {text}
             </div>        
