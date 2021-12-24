@@ -45,6 +45,7 @@ export default function TextForm(props) {
         let tex = document.getElementById("myBox");
         tex.select();
         navigator.clipboard.writeText(tex.value);
+        document.getSelection().removeAllRanges();
     }
 
     const [text, setText] = useState(''); //state change function
@@ -56,22 +57,21 @@ export default function TextForm(props) {
             <div className='container'style={{color: props.mode==="light"?"black":"white"}}>
                 <h1>{props.heading}</h1>
                 <div className="mb-3">
-                    <textarea className="form-control" style={{backgroundColor: props.mode==="dark"?"grey":"white",color:props.mode==="light"?"black":"white"}} onChange={handleOnChange} placeholder='Enter Text' value={text} id="myBox" rows="10"></textarea>                
+                    <textarea className="form-control" style={{backgroundColor: props.mode==="dark"?"#24303a":"white",color:props.mode==="light"?"black":"white"}} onChange={handleOnChange} placeholder='Enter Text' value={text} id="myBox" rows="10"></textarea>                
                 </div>
             </div>
-            <button className='btn btn-primary mx-2 my-1' onClick={handleUpClick}>Convert to Uppercase</button>
-            <button className='btn btn-primary mx-2 my-1' onClick={handleLoClick}>Convert to Lowercase</button>
-            <button className='btn btn-primary mx-2 my-1' onClick={handleCapitalize}>Capitalize Words</button>
-            <button className='btn btn-primary mx-2 my-1' onClick={handleClear}>Clear</button>
-            <button className='btn btn-primary mx-2 my-1' onClick={handleSpace}>Handling Extra Spaces</button>
-            <button className='btn btn-primary mx-2 my-1' onClick={handleCopy}>Copy Text</button>
+            <button disabled={text.lenght===0} className='btn btn-primary mx-2 my-1' onClick={handleUpClick}>Convert to Uppercase</button>
+            <button disabled={text.lenght===0} className='btn btn-primary mx-2 my-1' onClick={handleLoClick}>Convert to Lowercase</button>
+            <button disabled={text.lenght===0} className='btn btn-primary mx-2 my-1' onClick={handleCapitalize}>Capitalize Words</button>
+            <button disabled={text.lenght===0} className='btn btn-primary mx-2 my-1' onClick={handleClear}>Clear</button>
+            <button disabled={text.lenght===0} className='btn btn-primary mx-2 my-1' onClick={handleCopy}>Copy Text</button>
             
 
             <div className='container' style={{color: props.mode==="light"?"black":"white"}}>
                <h2>Text Summary</h2>    
-                <h5>{text.split(" ").length - 1} Words and {text.length} Characters</h5>
-                <h5>It will take {0.008 * text.split(" ").filter((element)=>{return element.lenght!==0}).length} minutes to read this text.</h5>              
-                <h5>Text has {text.split(".").filter((element)=>{return element.lenght!==0}).length} sentances.</h5>
+                <h5>{text.split(" ").filter((element)=>{return element.lenght!==0}).length -1} Words and {text.length} Characters</h5>
+                <h5>It will take {0.008 * (text.split(" ").filter((element)=>{return element.lenght!==0}).length -1)} minutes to read this text.</h5>              
+                <h5>Text has {text.split(".").filter((element)=>{return element.lenght!==0}).length -1} sentances.</h5>
                 <h2>Preview</h2>
                 {text}
             </div>        
