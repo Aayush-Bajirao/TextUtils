@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
  
 export default function TextForm(props) {
+
     const handleUpClick =() =>{                            //for changing text to setText as Uppercase 
         //console.log("handleUpClick fuction is fired." + text);
         let newText = text.toUpperCase();
@@ -60,11 +61,11 @@ export default function TextForm(props) {
                     <textarea className="form-control" style={{backgroundColor: props.mode==="dark"?"#24303a":"white",color:props.mode==="light"?"black":"white"}} onChange={handleOnChange} placeholder='Enter Text' value={text} id="myBox" rows="10"></textarea>                
                 </div>
             </div>
-            <button disabled={text.lenght===0} className='btn btn-primary mx-2 my-1' onClick={handleUpClick}>Convert to Uppercase</button>
-            <button disabled={text.lenght===0} className='btn btn-primary mx-2 my-1' onClick={handleLoClick}>Convert to Lowercase</button>
-            <button disabled={text.lenght===0} className='btn btn-primary mx-2 my-1' onClick={handleCapitalize}>Capitalize Words</button>
-            <button disabled={text.lenght===0} className='btn btn-primary mx-2 my-1' onClick={handleClear}>Clear</button>
-            <button disabled={text.lenght===0} className='btn btn-primary mx-2 my-1' onClick={handleCopy}>Copy Text</button>
+            <button disabled={ text.length < 1 } className='btn btn-primary mx-2 my-1' onClick={handleUpClick}>Convert to Uppercase</button>
+            <button disabled={ text.length < 1 } className='btn btn-primary mx-2 my-1' onClick={handleLoClick}>Convert to Lowercase</button>
+            <button disabled={ text.length < 1 } className='btn btn-primary mx-2 my-1' onClick={handleCapitalize}>Capitalize Words</button>
+            <button disabled={ text.length < 1 } className='btn btn-primary mx-2 my-1' onClick={handleClear}>Clear</button>
+            <button disabled={ text.length < 1 } className='btn btn-primary mx-2 my-1' onClick={handleCopy}>Copy Text</button>
             
 
             <div className='container' style={{color: props.mode==="light"?"black":"white"}}>
